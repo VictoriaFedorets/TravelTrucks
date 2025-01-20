@@ -6,7 +6,7 @@ export default function SharedLayout({ children }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className={css.containerMain}>{children}</main>
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );
