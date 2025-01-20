@@ -13,7 +13,7 @@
   --button: #e44848;
   --button-hover: #d84343;
   --rating: #ffc531;
-  /* --backgroung: ??? */
+  --background: rgba(0, 0, 0, 0.2);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,11 +22,6 @@
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -36,7 +31,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 
 * {
@@ -45,9 +40,12 @@ a {
   box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 button {
@@ -69,15 +67,10 @@ img {
 }
 
 input {
-  font-family: inherit;
-}
-
-input:focus,
-input:focus-visible {
   outline: none;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -88,4 +81,4 @@ input:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

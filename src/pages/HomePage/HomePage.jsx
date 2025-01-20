@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
+import css from "./HomePage.module.css";
+
 export default function HomePage() {
   return (
-    <div>
-      <PageTitle>Hello!😊</PageTitle>
-      <p>Welcome to the phone book!</p>
-      <p>
-        A simple and convenient application for creating a personal contact
-        book. You can add, remove, search for existing contacts by name.
-      </p>
-      <p>Register and keep your contacts safe with us!😉</p>
-    </div>
+    <section className={css.heroBackground}>
+      <div className={css.containerHome}>
+        <h1>Campers of your dreams</h1>
+        <p>You can find everything you want in our catalog</p>
+        <Link to="./catalog" className={css.btnViewNow}>
+          View Now
+        </Link>
+      </div>
+    </section>
   );
 }

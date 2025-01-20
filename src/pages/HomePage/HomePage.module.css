@@ -1,0 +1,55 @@
+.heroBackground {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 72px);
+  background-repeat: no-repeat;
+  background-position: center, center bottom;
+  background-size: cover;
+  background-image: url("../../images/dek-background-1x.png");
+}
+
+@media screen and (min-resolution: 192dpi) {
+  .heroBackground {
+    background-image: url("../../images/dek-background-2x.png");
+  }
+}
+
+@media screen and (min-resolution: 288dpi) {
+  .heroBackground {
+    background-image: url("../../images/dek-background-3x.png");
+  }
+}
+
+.containerHome {
+  padding: 0 64px;
+}
+
+.containerHome h1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67%;
+  color: var(--inputs);
+  margin-bottom: 16px;
+}
+
+.containerHome p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--inputs);
+  margin-bottom: 40px;
+}
+
+.btnViewNow {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 173px;
+  height: 56px;
+  background-color: var(--button);
+}
