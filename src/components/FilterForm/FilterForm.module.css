@@ -1,0 +1,67 @@
+.sidebar {
+  min-width: 360px;
+}
+
+.locationTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.locationInput {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: var(--inputs);
+  margin-bottom: 40px;
+}
+
+.input {
+  width: 100%;
+  background-color: inherit;
+  border: none;
+}
+
+.iconMap {
+  width: 20px;
+  height: 20px;
+}
+
+.filters {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+}
+
+.vehicle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 24px;
+  margin-top: 32px~;
+  margin-bottom: 24px;
+}
+
+.equipmentType {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.equipmentType li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  width: 112px;
+  height: 96px;
+  mix-blend-mode: multiply;
+}
