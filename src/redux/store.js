@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import transportReducer from "./transport/slice.js";
 // import filtersReducer from "./filtersSlice.js";
-// import favouritesReducer from "./favouritesSlice.js";
+import favouritesReducer from "./favourites/slice.js";
 
 import {
   persistStore,
@@ -23,7 +23,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   transport: transportReducer,
-  //   favourites: favouritesReducer,
+  favourites: favouritesReducer,
   //   filters: filtersReducer,
 });
 

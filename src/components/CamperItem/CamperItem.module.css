@@ -18,12 +18,102 @@
   object-position: 75% center; /* Центрування зображення */
 }
 
-/* .carInfo {
-} */
+.carInfo {
+  width: 524px;
+}
 
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btnHeart {
+  width: 26px;
+  height: 24px;
+  border: none;
+  background-color: inherit;
+}
+
+.iconHeart {
+  fill: var(--main);
+
+  width: 24px;
+  height: 21px;
+  transition: fill 0.3s;
+}
+
+.active {
+  stroke: var(--main);
+  width: 25px;
+  height: 22px;
+}
+
+.starLocation {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.star {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.iconStar {
+  width: 16px;
+  height: 16px;
+  fill: var(--rating);
+}
+
+.reviews {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.map {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.iconMap {
+  width: 16px;
+  height: 16px;
+}
+
+/* ????? */
 .description {
+  color: var(--text);
   width: 525px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 24px;
+}
+
+.btnShowMore {
+  border: none;
+  border-radius: 200px;
+  padding: 16px 40px;
+  width: 166px;
+  height: 56px;
+  background: var(--button);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
 }

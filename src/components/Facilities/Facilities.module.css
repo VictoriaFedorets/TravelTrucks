@@ -1,0 +1,27 @@
+.facilitiesList {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.facilitiesItem {
+  padding: 12px 18px;
+  display: flex;
+  gap: 2px;
+  border-radius: 100px;
+  background: var(--badges);
+  mix-blend-mode: multiply;
+}
+
+.facilitiesText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.facilitiesText::first-letter {
+  text-transform: uppercase;
+}
