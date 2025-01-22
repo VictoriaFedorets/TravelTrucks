@@ -5,6 +5,10 @@ import css from "./CatalogPage.module.css";
 import FilterForm from "../../components/FilterForm/FilterForm.jsx";
 
 export default function CatalogPage() {
+  // const handleFilterForm = userData => {
+  //   // Виконуємо необхідні операції з даними
+  //   console.log(userData);
+  // };
   return (
     <div className={css.container}>
       <FilterForm />
