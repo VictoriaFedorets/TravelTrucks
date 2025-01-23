@@ -1,28 +1,68 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import css from "./CatalogList.module.css";
-import { useEffect } from "react";
 import { fetchCampers } from "../../redux/transport/operations.js";
 import CamperItem from "../CamperItem/CamperItem.jsx";
 
-export default function CatalogList() {
+export default function CatalogList({ filters }) {
   const dispatch = useDispatch();
-  // const campersState = useSelector(state => state);
-  // console.log(campersState);
-  const campers = useSelector(state => state.transport.items); // Змінити відповідно до структури
-  console.log(campers);
+  const campers = useSelector(state => state.transport.items); // Доступ до всіх елементів
+  const [filteredCampers, setFilteredCampers] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchCampers()); // Виклик thunk
+    dispatch(fetchCampers()); // Виклик thunk для завантаження даних
   }, [dispatch]);
+
+  // Фільтрація списку відповідно до критеріїв
+  useEffect(() => {
+    // Логіка фільтрації
+    const filtered = campers.filter(camper => {
+      // Перевірка типу кузова
+      if (filters.vehicleType && camper.form !== filters.vehicleType) {
+        return false;
+      }
+
+      // Перевірка обладнання
+      const equipmentFilters = [
+        "AC",
+        "TV",
+        "bathroom",
+        "kitchen",
+        "gas",
+        "radio",
+      ];
+      for (const equipment of equipmentFilters) {
+        if (filters[equipment] && !camper[equipment]) {
+          return false;
+        }
+      }
+
+      // Перевірка локації
+      if (
+        filters.location &&
+        !camper.location.toLowerCase().includes(filters.location.toLowerCase())
+      ) {
+        return false;
+      }
+
+      return true;
+    });
+
+    setFilteredCampers(filtered);
+  }, [filters, campers]);
 
   return (
     <>
       <ul className={css.camperList}>
-        {campers.map(camper => (
-          <li key={camper.id}>
-            <CamperItem camper={camper} />
-          </li>
-        ))}
+        {filteredCampers.length > 0 ? (
+          filteredCampers.map(camper => (
+            <li key={camper.id}>
+              <CamperItem camper={camper} />
+            </li>
+          ))
+        ) : (
+          <p>No campers found matching the criteria.</p>
+        )}
       </ul>
     </>
   );

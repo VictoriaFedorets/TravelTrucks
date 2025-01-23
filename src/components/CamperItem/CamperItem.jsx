@@ -28,6 +28,9 @@ export default function CamperItem({ camper }) {
     }
   };
 
+  // Разделяем и меняем местами локацию
+  // const formattedLocation = location.split(", ").reverse().join(", ");
+
   return (
     <div className={css.camperWrapper}>
       <img src={gallery[0].original} alt={name} className={css.imgCar} />

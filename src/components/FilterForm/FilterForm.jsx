@@ -24,7 +24,7 @@ export default function FilterForm({ onFilter }) {
   const vehicleTypes = [
     { value: "van", label: "Van", icon: "icon-l-grid" },
     {
-      value: "fully integrated",
+      value: "fullyIntegrated",
       label: "Fully Integrated",
       icon: "icon-m-grid",
     },
@@ -42,7 +42,7 @@ export default function FilterForm({ onFilter }) {
         bathroom: false,
         radio: false,
         gas: false,
-        vehicleTypes: "",
+        vehicleType: "", // Виправлено назву
       }}
       onSubmit={handleSubmit}
     >
@@ -61,7 +61,7 @@ export default function FilterForm({ onFilter }) {
               id={`${id}-location`}
               name="location"
               type="text"
-              placeholder="Kyiv, Ukraine"
+              placeholder="Kyiv,Ukraine"
             />
           </div>
 
@@ -97,16 +97,16 @@ export default function FilterForm({ onFilter }) {
           <ul className={css.equipmentType}>
             {vehicleTypes.map(type => (
               <li
-                key={type.name}
+                key={type.value}
                 className={`${css.equipmentItem} ${
-                  values[type.name] ? css.active : ""
+                  values.vehicleType === type.value ? css.active : ""
                 }`}
               >
                 <Field
                   type="radio"
                   id={`${id}-${type.value}`}
                   name="vehicleType"
-                  value={type.value}
+                  value={type.value} // Значення має збігатися з типом у даних
                   className={css.fieldItem}
                 />
                 <label htmlFor={`${id}-${type.value}`}>

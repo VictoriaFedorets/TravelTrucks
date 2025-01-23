@@ -48,7 +48,6 @@
 
 .iconHeart {
   fill: var(--main);
-
   width: 24px;
   height: 21px;
   transition: fill 0.3s;
@@ -116,4 +115,10 @@
   line-height: 150%;
   letter-spacing: -0.01em;
   color: var(--white);
+  transition: border-color 0.3s ease;
+}
+
+.btnShowMore:hover,
+.btnShowMore:focus {
+  background: var(--button-hover);
 }

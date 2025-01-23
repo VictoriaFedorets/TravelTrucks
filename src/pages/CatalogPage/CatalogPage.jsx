@@ -1,18 +1,19 @@
-import CatalogList from "../../components/CatalogList/CatalogList.jsx";
-import { useSelector } from "react-redux";
-
-import css from "./CatalogPage.module.css";
 import FilterForm from "../../components/FilterForm/FilterForm.jsx";
+import CatalogList from "../../components/CatalogList/CatalogList.jsx";
+import css from "./CatalogPage.module.css";
+import { useState } from "react";
 
 export default function CatalogPage() {
-  // const handleFilterForm = userData => {
-  //   // Виконуємо необхідні операції з даними
-  //   console.log(userData);
-  // };
+  const [filters, setFilters] = useState({});
+
+  const handleFilter = filterValues => {
+    setFilters(filterValues); // Зберігаємо фільтри
+  };
+
   return (
     <div className={css.container}>
-      <FilterForm />
-      <CatalogList />
+      <FilterForm onFilter={handleFilter} />
+      <CatalogList filters={filters} />
     </div>
   );
 }
