@@ -1,5 +1,6 @@
 .container {
   padding: 48px 64px 52px 64px;
   display: flex;
+  justify-content: center;
   gap: 64px;
 }

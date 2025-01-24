@@ -5,8 +5,8 @@ import css from "./SharedLayout.module.css";
 export default function SharedLayout({ children }) {
   return (
     <>
-      <Header />
-      <main className={css.containerMain}>{children}</main>
+      <Header className={css.container} />
+      <main>{children}</main>
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );

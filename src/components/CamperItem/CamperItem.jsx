@@ -9,6 +9,7 @@ import Facilities from "../Facilities/Facilities.jsx";
 
 import css from "./CamperItem.module.css";
 import { selectFavourites } from "../../redux/favourites/selectors.js";
+import { Link } from "react-router-dom";
 
 export default function CamperItem({ camper }) {
   const { id, gallery, name, price, rating, reviews, location, description } =
@@ -73,7 +74,9 @@ export default function CamperItem({ camper }) {
 
         <Facilities camper={camper} />
 
-        <button className={css.btnShowMore}>Show more</button>
+        <Link to={`/catalog/${id}`} className={css.btnShowMore}>
+          Show more
+        </Link>
       </div>
     </div>
   );
