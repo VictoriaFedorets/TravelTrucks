@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import css from "./CatalogList.module.css";
-import { fetchCampers } from "../../redux/transport/operations.js";
+import { fetchCampers } from "../../redux/camper/operations.js";
 import CamperItem from "../CamperItem/CamperItem.jsx";
 
 export default function CatalogList({ filters }) {
   const dispatch = useDispatch();
-  const campers = useSelector(state => state.transport.items); // Доступ до всіх елементів
+  const campers = useSelector(state => state.camper.items); // Доступ до всіх елементів
   const [filteredCampers, setFilteredCampers] = useState([]);
 
   useEffect(() => {

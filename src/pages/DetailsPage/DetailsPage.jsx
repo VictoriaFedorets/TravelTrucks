@@ -1,31 +1,34 @@
 import { useEffect } from "react";
-import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import sprite from "../../icons/sprite.svg";
-import { fetchByIdCamper } from "../../redux/transport/operations";
+import { fetchByIdCamper } from "../../redux/camper/operations.js";
 import css from "./DetailsPage.module.css";
 import clsx from "clsx";
 
 export default function DetailsPage() {
-  const { id } = useParams();
+  const { id } = useParams(); // Берем id из параметров маршрута
   const dispatch = useDispatch();
-  const camper = useSelector(state =>
-    state.transport.items.find(item => item.id === id)
-  );
+
+  const camper = useSelector(state => state.camper.current);
+  const isLoading = useSelector(state => state.camper.isLoading);
+  const error = useSelector(state => state.camper.error);
 
   const getNavLinkClass = props => {
     return clsx(css.link, props.isActive && css.active);
   };
 
   useEffect(() => {
-    if (!camper) {
-      dispatch(fetchByIdCamper(id)); // Виклик thunk для завантаження даних
+    if (id) {
+      dispatch(fetchByIdCamper(id));
+    } else {
+      console.error("ID is missing");
     }
-  }, [dispatch, id, camper]);
+  }, [dispatch, id]);
 
-  if (!camper) {
-    return <p>Loading...</p>; // Пока данные загружаются
-  }
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!camper) return <p>No camper found.</p>;
 
   return (
     <div className={css.detailsWrapper}>
@@ -55,22 +58,26 @@ export default function DetailsPage() {
         </div>
 
         <ul className={css.imgGallery}>
-          {camper.gallery.map((photo, index) => (
-            <li key={`${id}-${index}`} className={css.galleryItem}>
-              <img
-                src={photo.original}
-                alt={camper.name}
-                className={css.imgCar}
-              />
-            </li>
-          ))}
+          {Array.isArray(camper.gallery) && camper.gallery.length > 0 ? (
+            camper.gallery.map((photo, index) => (
+              <li key={`${id}-${index}`} className={css.galleryItem}>
+                <img
+                  src={photo.original}
+                  alt={camper.name}
+                  className={css.imgCar}
+                />
+              </li>
+            ))
+          ) : (
+            <p>No gallery images available.</p>
+          )}
         </ul>
 
         <p className={css.description}>{camper.description}</p>
       </div>
 
-      <div>
-        <ul className={css.featuresReviews}>
+      <div className={css.featuresReviews}>
+        <ul className={css.featuresReviewsList}>
           <li className={css.featuresItems}>
             <NavLink to="features" className={getNavLinkClass}>
               Features

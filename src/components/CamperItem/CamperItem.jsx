@@ -17,6 +17,7 @@ export default function CamperItem({ camper }) {
   const dispatch = useDispatch();
   const favourites = useSelector(selectFavourites);
   console.log(selectFavourites);
+
   const isFavourite = favourites.includes(id);
   console.log(isFavourite);
   // Перевіряємо, чи є елемент в обраних
@@ -42,7 +43,16 @@ export default function CamperItem({ camper }) {
 
           <div className={css.price}>
             <h3>€{price}</h3>
-            <button onClick={handleFavouriteClick} className={css.btnHeart}>
+            <button
+              onClick={handleFavouriteClick}
+              className={css.btnHeart}
+              aria-label={
+                isFavourite ? "Remove from favourites" : "Add to favourites"
+              }
+              title={
+                isFavourite ? "Remove from favourites" : "Add to favourites"
+              }
+            >
               <svg
                 className={`${css.iconHeart} ${isFavourite ? css.active : ""}`}
               >
@@ -58,7 +68,7 @@ export default function CamperItem({ camper }) {
               <use href={`${sprite}#icon-star`} />
             </svg>
             <p className={css.reviews}>
-              {rating}({reviews.length} Reviews)
+              {rating}({reviews?.length || 0} Reviews)
             </p>
           </div>
 

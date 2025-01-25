@@ -1,0 +1,52 @@
+.reviewItem {
+  margin-bottom: 44px;
+}
+
+.name {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.nameReview {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--main);
+}
+
+.firstLetter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background: var(--badges);
+
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+}
+
+.reviewText {
+  color: var(--text);
+}
+
+.starList {
+  display: flex;
+  gap: 4px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--badges);
+}
+
+.filled {
+  fill: var(--rating);
+}

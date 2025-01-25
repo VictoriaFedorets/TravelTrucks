@@ -77,3 +77,21 @@
   object-fit: cover; /* Масштабування та обрізка */
   object-position: 75% center; /* Центрування зображення */
 }
+
+.featuresReviewsList {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 24px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 56px;
+}
+
+.active {
+  border-bottom: 5px solid var(--button);
+  padding-bottom: 23px;
+}
