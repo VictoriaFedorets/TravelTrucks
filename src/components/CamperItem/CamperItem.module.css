@@ -5,7 +5,6 @@
   border-radius: 20px;
   padding: 24px;
   width: 888px;
-  height: 368px;
   padding: 24px;
   margin-bottom: 32px;
 }
@@ -13,7 +12,7 @@
 .imgCar {
   border-radius: 10px;
   width: 292px;
-  height: 320px;
+  /* height: 320px; */
   object-fit: cover; /* Масштабування та обрізка */
   object-position: 75% center; /* Центрування зображення */
 }

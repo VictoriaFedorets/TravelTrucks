@@ -1,0 +1,32 @@
+.features {
+  border-radius: 10px;
+  padding: 44px 52px;
+  width: 631px;
+  height: 588px;
+  background: var(--inputs);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 24px;
+  margin-top: 100px;
+  margin-bottom: 24px;
+}
+
+.detailsItem {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--main);
+}
+
+.detailsItem:not(:last-child) {
+  margin-bottom: 16px; /* Задайте необходимое значение */
+}

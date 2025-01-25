@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import css from "./CatalogList.module.css";
 import { fetchCampers } from "../../redux/camper/operations.js";
+import { selectCampers } from "../../redux/camper/selectors.js";
 import CamperItem from "../CamperItem/CamperItem.jsx";
 
 export default function CatalogList({ filters }) {
   const dispatch = useDispatch();
-  const campers = useSelector(state => state.camper.items); // Доступ до всіх елементів
+  const campers = useSelector(selectCampers);
   const [filteredCampers, setFilteredCampers] = useState([]);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function CatalogList({ filters }) {
         "gas",
         "radio",
       ];
+
       for (const equipment of equipmentFilters) {
         if (filters[equipment] && !camper[equipment]) {
           return false;

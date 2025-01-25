@@ -23,7 +23,7 @@ export default function Reviews() {
         {currentCamper.reviews.map((review, index) => (
           <li className={css.reviewItem} key={index}>
             <div className={css.name}>
-              <span className={css.firstLetter}>F</span>
+              <span className={css.firstLetter}>?</span>
               <div className={css.nameReview}>
                 <h4>{review.reviewer_name}</h4>
 

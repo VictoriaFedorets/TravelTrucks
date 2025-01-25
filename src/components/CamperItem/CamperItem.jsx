@@ -16,7 +16,7 @@ export default function CamperItem({ camper }) {
     camper;
   const dispatch = useDispatch();
   const favourites = useSelector(selectFavourites);
-  console.log(selectFavourites);
+  // console.log(selectFavourites);
 
   const isFavourite = favourites.includes(id);
   console.log(isFavourite);

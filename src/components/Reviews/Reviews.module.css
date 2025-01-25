@@ -11,10 +11,15 @@
 }
 
 .nameReview {
+  padding: 8px 0px;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   color: var(--main);
+}
+
+.nameReview h4 {
+  margin-bottom: 4px;
 }
 
 .firstLetter {
