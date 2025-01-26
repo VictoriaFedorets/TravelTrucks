@@ -53,7 +53,8 @@
 }
 
 .active {
-  stroke: var(--main);
+  stroke: var(--button);
+  fill: var(--button);
   width: 25px;
   height: 22px;
 }

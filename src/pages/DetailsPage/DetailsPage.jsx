@@ -90,8 +90,10 @@ export default function DetailsPage() {
             </NavLink>
           </li>
         </ul>
-        <BookingForm />
-        <Outlet />
+        <div className={css.formContainer}>
+          <Outlet />
+          <BookingForm />
+        </div>
       </div>
     </div>
   );

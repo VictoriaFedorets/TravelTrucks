@@ -78,6 +78,11 @@
   object-position: 75% center; /* Центрування зображення */
 }
 
+.formContainer {
+  display: flex;
+  gap: 40px;
+}
+
 .featuresReviewsList {
   display: flex;
   gap: 40px;
