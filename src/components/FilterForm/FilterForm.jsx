@@ -42,7 +42,7 @@ export default function FilterForm({ onFilter }) {
         bathroom: false,
         radio: false,
         gas: false,
-        vehicleType: "", // Виправлено назву
+        vehicleType: "",
       }}
       onSubmit={handleSubmit}
     >

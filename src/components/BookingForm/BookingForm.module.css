@@ -1,0 +1,81 @@
+.wrapperForm {
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 44px 57px;
+  width: 641px;
+  height: 588px;
+}
+
+.titleForm {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.input {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+  border: none;
+  border-radius: 12px;
+  padding: 18px;
+  width: 527px;
+  background: var(--inputs);
+}
+
+.input:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.inputPicker {
+  width: 495px;
+  border: none;
+  background: var(--inputs);
+}
+
+.inputPicker::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+}
+
+.inputComment {
+  height: 118px;
+}
+
+.inputComment:focus {
+  outline: none; /* Убирает стандартный outline */
+  border: none; /* Убирает рамку */
+}
+
+.sendButton {
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background: var(--button);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.sendButton:hover,
+.sendButton:focus {
+  background: var(--button-hover);
+}

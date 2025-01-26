@@ -5,6 +5,7 @@ import sprite from "../../icons/sprite.svg";
 import { fetchByIdCamper } from "../../redux/camper/operations.js";
 import css from "./DetailsPage.module.css";
 import clsx from "clsx";
+import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 
 export default function DetailsPage() {
   const { id } = useParams(); // Берем id из параметров маршрута
@@ -36,7 +37,7 @@ export default function DetailsPage() {
         <div>
           <h3 className={css.title}>{camper.name}</h3>
 
-          <div className={css.starLocation}>
+          <a href="#reviews" className={css.starLocation}>
             <div className={css.icon}>
               <svg className={css.iconStar}>
                 <use href={`${sprite}#icon-star`} />
@@ -52,7 +53,7 @@ export default function DetailsPage() {
               </svg>
               <p>{camper.location}</p>
             </div>
-          </div>
+          </a>
 
           <h3 className={css.price}>€{camper.price}</h3>
         </div>
@@ -83,12 +84,13 @@ export default function DetailsPage() {
               Features
             </NavLink>
           </li>
-          <li className={css.reviewsItems}>
+          <li className={css.reviewsItems} id="reviews">
             <NavLink to="reviews" className={getNavLinkClass}>
               Reviews
             </NavLink>
           </li>
         </ul>
+        <BookingForm />
         <Outlet />
       </div>
     </div>

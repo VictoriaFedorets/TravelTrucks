@@ -9,7 +9,7 @@ import Facilities from "../Facilities/Facilities.jsx";
 
 import css from "./CamperItem.module.css";
 import { selectFavourites } from "../../redux/favourites/selectors.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CamperItem({ camper }) {
   const { id, gallery, name, price, rating, reviews, location, description } =
@@ -28,6 +28,12 @@ export default function CamperItem({ camper }) {
     } else {
       dispatch(addToFavourites(id));
     }
+  };
+
+  const navigate = useNavigate(); // Хук для программной навигации
+
+  const handleStarLocationClick = () => {
+    navigate(`/catalog/${id}/reviews`); // Программное перенаправление
   };
 
   // Разделяем и меняем местами локацию
@@ -62,7 +68,17 @@ export default function CamperItem({ camper }) {
           </div>
         </div>
 
-        <div className={css.starLocation}>
+        <div
+          className={css.starLocation}
+          onClick={handleStarLocationClick}
+          role="button"
+          tabIndex={0} // Чтобы сделать div доступным через клавиатуру
+          onKeyDown={e => {
+            if (e.key === "Enter" || e.key === " ") {
+              handleStarLocationClick();
+            }
+          }}
+        >
           <div className={css.star}>
             <svg className={css.iconStar}>
               <use href={`${sprite}#icon-star`} />

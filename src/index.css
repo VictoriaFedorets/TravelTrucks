@@ -43,6 +43,7 @@ p {
 }
 
 button {
+  border: none;
   display: block;
   cursor: pointer;
   outline: none;
