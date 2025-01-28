@@ -22,9 +22,11 @@ export default function CatalogList({ filters }) {
     }
 
     const filtered = campers.filter(camper => {
+      let matches = true; // Встановлюємо flag, щоб відстежувати, чи знайдено співпадіння
+
       // Проверка типа кузова
       if (filters.vehicleType && camper.form !== filters.vehicleType) {
-        return false;
+        matches = false;
       }
 
       // Проверка оборудования
@@ -42,7 +44,7 @@ export default function CatalogList({ filters }) {
 
       for (const equipment of equipmentFilters) {
         if (filters[equipment] && !camper[equipment]) {
-          return false;
+          matches = false;
         }
       }
 
@@ -55,16 +57,16 @@ export default function CatalogList({ filters }) {
         const camperParts = camperLocation.split(",").map(word => word.trim());
 
         // Проверяем, чтобы каждое слово из ввода было в локации кемпера
-        const matches = inputWords.every(inputPart =>
+        const locationMatches = inputWords.every(inputPart =>
           camperParts.some(camperPart => camperPart.includes(inputPart))
         );
 
-        if (!matches) {
-          return false;
+        if (!locationMatches) {
+          matches = false;
         }
       }
-
-      return true;
+      // Якщо хоча б один фільтр не проходить, то елемент не підходить
+      return matches;
     });
 
     setFilteredCampers(filtered);

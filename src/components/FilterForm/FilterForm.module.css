@@ -24,13 +24,30 @@
 .input {
   background-color: var(--inputs);
   width: 100%;
+  color: var(--gray);
   border: none; /* Убирает границу, если нужно */
   outline: none; /* Убирает обводку при фокусе */
+}
+
+.input::placeholder {
+  color: var(--gray);
+}
+
+.input::placeholder:hover,
+.input::placeholder:focus {
+  color: var(--main);
 }
 
 .iconMap {
   width: 20px;
   height: 20px;
+  fill: var(--gray);
+  transition: fill 0.3s ease;
+}
+
+.locationInput:hover .iconMap,
+.locationInput:focus .iconMap {
+  fill: var(--main);
 }
 
 .filters {
