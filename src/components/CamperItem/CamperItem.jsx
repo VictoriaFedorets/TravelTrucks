@@ -19,7 +19,7 @@ export default function CamperItem({ camper }) {
   // console.log(selectFavourites);
 
   const isFavourite = favourites.includes(id);
-  console.log(isFavourite);
+  // console.log(isFavourite);
   // Перевіряємо, чи є елемент в обраних
 
   const handleFavouriteClick = () => {
@@ -37,7 +37,7 @@ export default function CamperItem({ camper }) {
   };
 
   // Разделяем и меняем местами локацию
-  // const formattedLocation = location.split(", ").reverse().join(", ");
+  const formattedLocation = location.split(", ").reverse().join(", ");
 
   return (
     <div className={css.camperWrapper}>
@@ -92,7 +92,7 @@ export default function CamperItem({ camper }) {
             <svg className={css.iconMap}>
               <use href={`${sprite}#icon-map`} />
             </svg>
-            <p>{location}</p>
+            <p>{formattedLocation}</p>
           </div>
         </div>
 

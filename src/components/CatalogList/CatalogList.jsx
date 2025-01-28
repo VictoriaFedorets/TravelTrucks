@@ -16,7 +16,12 @@ export default function CatalogList({ filters }) {
 
   // Фільтрація списку відповідно до критеріїв
   useEffect(() => {
-    // Логіка фільтрації
+    // Якщо фільтрів немає, показуємо всі кемпери
+    if (!filters || Object.keys(filters).length === 0) {
+      setFilteredCampers(campers);
+      return;
+    }
+
     const filtered = campers.filter(camper => {
       // Перевірка типу кузова
       if (filters.vehicleType && camper.form !== filters.vehicleType) {
@@ -31,6 +36,9 @@ export default function CatalogList({ filters }) {
         "kitchen",
         "gas",
         "radio",
+        "water",
+        "microwave",
+        "refrigerator",
       ];
 
       for (const equipment of equipmentFilters) {
@@ -40,11 +48,22 @@ export default function CatalogList({ filters }) {
       }
 
       // Перевірка локації
-      if (
-        filters.location &&
-        !camper.location.toLowerCase().includes(filters.location.toLowerCase())
-      ) {
-        return false;
+      // Перевірка локації (порівнюємо у будь-якому порядку)
+      if (filters.location) {
+        const [inputCity, inputCountry] = filters.location
+          .split(",")
+          .map(item => item.trim().toLowerCase());
+
+        const [camperCity, camperCountry] = camper.location
+          .split(",")
+          .map(item => item.trim().toLowerCase());
+
+        if (
+          !(inputCity === camperCity && inputCountry === camperCountry) &&
+          !(inputCity === camperCountry && inputCountry === camperCity)
+        ) {
+          return false;
+        }
       }
 
       return true;

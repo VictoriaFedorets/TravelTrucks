@@ -7,7 +7,12 @@ export default function FilterForm({ onFilter }) {
   const id = useId();
 
   const handleSubmit = (values, actions) => {
-    onFilter(values); // Передача фільтрів до батьківського компонента
+    const normalizedLocation = values.location
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+
+    onFilter({ values, location: normalizedLocation }); // Передача фільтрів до батьківського компонента
     actions.setSubmitting(false); // Завершення стану сабміту
   };
 
@@ -61,7 +66,7 @@ export default function FilterForm({ onFilter }) {
               id={`${id}-location`}
               name="location"
               type="text"
-              placeholder="Kyiv,Ukraine"
+              placeholder="Kyiv, Ukraine"
             />
           </div>
 
