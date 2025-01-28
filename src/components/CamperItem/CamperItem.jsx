@@ -15,6 +15,7 @@ export default function CamperItem({ camper }) {
   const { id, gallery, name, price, rating, reviews, location, description } =
     camper;
   const dispatch = useDispatch();
+  const formattedPrice = Number(price).toFixed(2);
   const favourites = useSelector(selectFavourites);
   // console.log(selectFavourites);
 
@@ -48,7 +49,7 @@ export default function CamperItem({ camper }) {
           <h3>{name}</h3>
 
           <div className={css.price}>
-            <h3>€{price}</h3>
+            <h3>€{formattedPrice}</h3>
             <button
               onClick={handleFavouriteClick}
               className={css.btnHeart}

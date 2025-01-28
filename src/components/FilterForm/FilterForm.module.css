@@ -17,7 +17,7 @@
   border: none;
   border-radius: 12px;
   padding: 16px 20px;
-  background: var(--inputs);
+  background-color: var(--inputs);
   margin-bottom: 40px;
 }
 

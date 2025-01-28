@@ -12,7 +12,14 @@ export default function FilterForm({ onFilter }) {
       .replace(/\s+/g, " ")
       .trim();
 
-    onFilter({ values, location: normalizedLocation }); // Передача фільтрів до батьківського компонента
+    const filteredValues = {
+      ...values,
+      location: normalizedLocation,
+    };
+
+    console.log("Filtered values:", filteredValues); // Додано для налагодження
+
+    onFilter(filteredValues); // Передача фільтрів до батьківського компонента
     actions.setSubmitting(false); // Завершення стану сабміту
   };
 
@@ -24,6 +31,10 @@ export default function FilterForm({ onFilter }) {
     { name: "bathroom", label: "Bathroom", icon: "icon-shower" },
     { name: "radio", label: "Radio", icon: "icon-radio" },
     { name: "gas", label: "Gas", icon: "icon-gas" },
+    { name: "microwave", label: "Microwave", icon: "icon-microwave" },
+    // { name: "shower", label: "Shower", icon: "icon-shower" },
+    { name: "refrigerator", label: "Refrigerator", icon: "icon-fridge" },
+    { name: "water", label: "Water", icon: "icon-water" },
   ];
 
   const vehicleTypes = [
@@ -41,17 +52,21 @@ export default function FilterForm({ onFilter }) {
       initialValues={{
         location: "",
         AC: false,
-        automatic: false,
-        kitchen: false,
         TV: false,
         bathroom: false,
-        radio: false,
         gas: false,
+        kitchen: false,
+        microwave: false,
+        // shower: false,
+        radio: false,
+        refrigerator: false,
+        water: false,
+        automatic: false,
         vehicleType: "",
       }}
       onSubmit={handleSubmit}
     >
-      {({ values }) => (
+      {({ values, setFieldValue }) => (
         <Form className={css.sidebar}>
           {/* Локація */}
           <label htmlFor={`${id}-location`} className={css.locationTitle}>
@@ -111,8 +126,17 @@ export default function FilterForm({ onFilter }) {
                   type="radio"
                   id={`${id}-${type.value}`}
                   name="vehicleType"
-                  value={type.value} // Значення має збігатися з типом у даних
+                  value={type.value}
+                  checked={values.vehicleType === type.value}
                   className={css.fieldItem}
+                  onChange={() => {
+                    // Логіка: якщо вибрано той самий тип — знімаємо вибір
+                    if (values.vehicleType === type.value) {
+                      setFieldValue("vehicleType", ""); // Знімаємо вибір
+                    } else {
+                      setFieldValue("vehicleType", type.value); // Встановлюємо значення
+                    }
+                  }}
                 />
                 <label htmlFor={`${id}-${type.value}`}>
                   <svg className={css.icon}>

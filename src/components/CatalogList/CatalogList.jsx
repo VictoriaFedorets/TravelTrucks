@@ -11,24 +11,23 @@ export default function CatalogList({ filters }) {
   const [filteredCampers, setFilteredCampers] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchCampers()); // Виклик thunk для завантаження даних
+    dispatch(fetchCampers()); // Загружаем данные через thunk
   }, [dispatch]);
 
-  // Фільтрація списку відповідно до критеріїв
+  // Фильтрация списка по критериям
   useEffect(() => {
-    // Якщо фільтрів немає, показуємо всі кемпери
     if (!filters || Object.keys(filters).length === 0) {
       setFilteredCampers(campers);
       return;
     }
 
     const filtered = campers.filter(camper => {
-      // Перевірка типу кузова
+      // Проверка типа кузова
       if (filters.vehicleType && camper.form !== filters.vehicleType) {
         return false;
       }
 
-      // Перевірка обладнання
+      // Проверка оборудования
       const equipmentFilters = [
         "AC",
         "TV",
@@ -47,21 +46,20 @@ export default function CatalogList({ filters }) {
         }
       }
 
-      // Перевірка локації
-      // Перевірка локації (порівнюємо у будь-якому порядку)
+      // Проверка локации
       if (filters.location) {
-        const [inputCity, inputCountry] = filters.location
-          .split(",")
-          .map(item => item.trim().toLowerCase());
+        const normalizedInput = filters.location.toLowerCase().trim(); // Приводим ввод к нижнему регистру
+        const inputWords = normalizedInput.split(",").map(word => word.trim()); // Разбиваем на части (город, страна)
 
-        const [camperCity, camperCountry] = camper.location
-          .split(",")
-          .map(item => item.trim().toLowerCase());
+        const camperLocation = camper.location.toLowerCase().trim();
+        const camperParts = camperLocation.split(",").map(word => word.trim());
 
-        if (
-          !(inputCity === camperCity && inputCountry === camperCountry) &&
-          !(inputCity === camperCountry && inputCountry === camperCity)
-        ) {
+        // Проверяем, чтобы каждое слово из ввода было в локации кемпера
+        const matches = inputWords.every(inputPart =>
+          camperParts.some(camperPart => camperPart.includes(inputPart))
+        );
+
+        if (!matches) {
           return false;
         }
       }

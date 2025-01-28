@@ -10,10 +10,20 @@ import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 export default function DetailsPage() {
   const { id } = useParams(); // Берем id из параметров маршрута
   const dispatch = useDispatch();
-
   const camper = useSelector(state => state.camper.current);
+
+  const { price, name, rating, reviews, location, description, gallery } =
+    camper;
   const isLoading = useSelector(state => state.camper.isLoading);
   const error = useSelector(state => state.camper.error);
+
+  const formattedPrice = Number(price).toFixed(2);
+  // console.log(location);
+  // через те що location undefined  до загрузки даних, тому робимо перевірку з тернарним нижче
+  const formattedLocation = location
+    ? camper.location.split(", ").reverse().join(", ")
+    : "Location not available";
+  // console.log(formattedLocation);
 
   const getNavLinkClass = props => {
     return clsx(css.link, props.isActive && css.active);
@@ -35,7 +45,7 @@ export default function DetailsPage() {
     <div className={css.detailsWrapper}>
       <div className={css.detailsInfo}>
         <div>
-          <h3 className={css.title}>{camper.name}</h3>
+          <h3 className={css.title}>{name}</h3>
 
           <a href="#reviews" className={css.starLocation}>
             <div className={css.icon}>
@@ -43,7 +53,7 @@ export default function DetailsPage() {
                 <use href={`${sprite}#icon-star`} />
               </svg>
               <p className={css.reviews}>
-                {camper.rating}({camper.reviews?.length || 0} Reviews)
+                {rating}({reviews?.length || 0} Reviews)
               </p>
             </div>
 
@@ -51,22 +61,18 @@ export default function DetailsPage() {
               <svg className={css.iconMap}>
                 <use href={`${sprite}#icon-map`} />
               </svg>
-              <p>{camper.location}</p>
+              <p>{formattedLocation}</p>
             </div>
           </a>
 
-          <h3 className={css.price}>€{camper.price}</h3>
+          <h3 className={css.price}>€{formattedPrice}</h3>
         </div>
 
         <ul className={css.imgGallery}>
-          {Array.isArray(camper.gallery) && camper.gallery.length > 0 ? (
-            camper.gallery.map((photo, index) => (
+          {Array.isArray(gallery) && gallery.length > 0 ? (
+            gallery.map((photo, index) => (
               <li key={`${id}-${index}`} className={css.galleryItem}>
-                <img
-                  src={photo.original}
-                  alt={camper.name}
-                  className={css.imgCar}
-                />
+                <img src={photo.original} alt={name} className={css.imgCar} />
               </li>
             ))
           ) : (
@@ -74,7 +80,7 @@ export default function DetailsPage() {
           )}
         </ul>
 
-        <p className={css.description}>{camper.description}</p>
+        <p className={css.description}>{description}</p>
       </div>
 
       <div className={css.featuresReviews}>
