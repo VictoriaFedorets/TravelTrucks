@@ -42,6 +42,7 @@
 .inputPicker {
   width: 495px;
   border: none;
+  color: var(--gray);
   background: var(--inputs);
 }
 

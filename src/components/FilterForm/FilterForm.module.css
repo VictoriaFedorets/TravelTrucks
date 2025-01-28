@@ -22,7 +22,7 @@
 }
 
 .input {
-  background: transparent;
+  background-color: var(--inputs);
   width: 100%;
   border: none; /* Убирает границу, если нужно */
   outline: none; /* Убирает обводку при фокусе */
