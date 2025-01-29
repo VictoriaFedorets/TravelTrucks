@@ -1,3 +1,27 @@
+.catalogBlock {
+}
+
 .camperList {
   width: 888px;
+}
+
+.loadMoreButton {
+  margin: 0 auto;
+  border: none;
+  border-radius: 200px;
+  padding: 16px 40px;
+  width: 166px;
+  height: 56px;
+  background: var(--button);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  transition: border-color 0.3s ease;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus {
+  background: var(--button-hover);
 }
