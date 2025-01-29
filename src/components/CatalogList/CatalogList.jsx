@@ -1,6 +1,5 @@
 import css from "./CatalogList.module.css";
 import CamperItem from "../CamperItem/CamperItem.jsx";
-import { Link } from "react-router-dom";
 
 export default function CatalogList({ campers, visibleCount, onLoadMore }) {
   const visibleCampers = campers.slice(0, visibleCount);

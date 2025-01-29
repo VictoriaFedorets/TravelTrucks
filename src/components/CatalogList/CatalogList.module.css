@@ -20,8 +20,7 @@
   transition: border 0.3s ease;
 }
 
-.loadMoreButton:hover,
-.loadMoreButton:focus {
+.loadMoreButton:hover {
   border: 1px solid var(--button-hover);
 }
 

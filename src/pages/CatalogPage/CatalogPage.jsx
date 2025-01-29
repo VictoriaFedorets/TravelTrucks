@@ -71,11 +71,11 @@ export default function CatalogPage() {
     }
 
     setFilteredCampers(filtered);
-    setVisibleCount(3); // Скидуємо кільк кемперів при зміні фильтра
+    setVisibleCount(5); // Скидуємо кільк кемперів при зміні фильтра
   }, [filters, campers]);
 
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 3);
+    setVisibleCount(prev => prev + 5);
   };
 
   return (
