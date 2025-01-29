@@ -6,6 +6,7 @@ import { fetchByIdCamper } from "../../redux/camper/operations.js";
 import css from "./DetailsPage.module.css";
 import clsx from "clsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 export default function DetailsPage() {
   const { id } = useParams(); // Берем id из параметров маршрута
@@ -37,7 +38,7 @@ export default function DetailsPage() {
     }
   }, [dispatch, id]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader />;
   if (error) return <p>Error: {error}</p>;
   if (!camper) return <p>No camper found.</p>;
 

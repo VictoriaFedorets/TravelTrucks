@@ -5,9 +5,12 @@ import { selectCampers } from "../../redux/camper/selectors.js";
 import FilterForm from "../../components/FilterForm/FilterForm.jsx";
 import CatalogList from "../../components/CatalogList/CatalogList.jsx";
 import css from "./CatalogPage.module.css";
+import Loader from "../../components/Loader/Loader.jsx";
+import { selectIsLoading } from "../../redux/camper/selectors.js";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const campers = useSelector(selectCampers);
   const [filters, setFilters] = useState({});
   const [filteredCampers, setFilteredCampers] = useState([]);
@@ -80,12 +83,18 @@ export default function CatalogPage() {
 
   return (
     <div className={css.container}>
-      <FilterForm onFilter={setFilters} />
-      <CatalogList
-        campers={filteredCampers}
-        visibleCount={visibleCount}
-        onLoadMore={handleLoadMore}
-      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <FilterForm onFilter={setFilters} />
+          <CatalogList
+            campers={filteredCampers}
+            visibleCount={visibleCount}
+            onLoadMore={handleLoadMore}
+          />
+        </>
+      )}
     </div>
   );
 }
