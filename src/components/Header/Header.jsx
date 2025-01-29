@@ -1,5 +1,5 @@
 import sprite from "../../icons/sprite.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Header.module.css";
 
@@ -10,9 +10,12 @@ export default function Header() {
 
   return (
     <header className={css.containerHeader}>
-      <svg className={css.iconLogo}>
-        <use href={`${sprite}#icon-logo`} />
-      </svg>
+      <NavLink to="/" className={`${getNavLinkClass} && ${css.logo}`}>
+        <svg className={css.iconLogo}>
+          <use href={`${sprite}#icon-logo`} />
+        </svg>
+      </NavLink>
+
       <nav className={css.nav}>
         <NavLink to="/" className={getNavLinkClass}>
           Home

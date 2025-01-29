@@ -33,7 +33,7 @@ export default function CamperItem({ camper }) {
 
   const navigate = useNavigate(); // Хук для программной навигации
 
-  const handleStarLocationClick = () => {
+  const handleClickSeeReviews = () => {
     navigate(`/catalog/${id}/reviews`); // Программное перенаправление
   };
 
@@ -69,18 +69,18 @@ export default function CamperItem({ camper }) {
           </div>
         </div>
 
-        <div
-          className={css.starLocation}
-          onClick={handleStarLocationClick}
-          role="button"
-          tabIndex={0} // Чтобы сделать div доступным через клавиатуру
-          onKeyDown={e => {
-            if (e.key === "Enter" || e.key === " ") {
-              handleStarLocationClick();
-            }
-          }}
-        >
-          <div className={css.star}>
+        <div className={css.starLocation}>
+          <div
+            className={css.star}
+            onClick={handleClickSeeReviews}
+            role="button"
+            tabIndex={0} // Щоб div був доступний через клавіатуру
+            onKeyDown={e => {
+              if (e.key === "Enter" || e.key === " ") {
+                handleClickSeeReviews();
+              }
+            }}
+          >
             <svg className={css.iconStar}>
               <use href={`${sprite}#icon-star`} />
             </svg>

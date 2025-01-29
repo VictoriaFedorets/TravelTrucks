@@ -63,13 +63,13 @@
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
-  cursor: pointer;
 }
 
 .star {
   display: flex;
   gap: 4px;
   align-items: center;
+  cursor: pointer;
 }
 
 .iconStar {

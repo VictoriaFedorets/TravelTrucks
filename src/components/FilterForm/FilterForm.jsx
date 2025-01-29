@@ -81,7 +81,7 @@ export default function FilterForm({ onFilter }) {
               id={`${id}-location`}
               name="location"
               type="text"
-              placeholder="Kyiv, Ukraine"
+              placeholder="City"
             />
           </div>
 

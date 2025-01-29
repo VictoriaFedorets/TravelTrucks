@@ -47,15 +47,17 @@ export default function DetailsPage() {
         <div>
           <h3 className={css.title}>{name}</h3>
 
-          <a href="#reviews" className={css.starLocation}>
-            <div className={css.icon}>
-              <svg className={css.iconStar}>
-                <use href={`${sprite}#icon-star`} />
-              </svg>
-              <p className={css.reviews}>
-                {rating}({reviews?.length || 0} Reviews)
-              </p>
-            </div>
+          <div className={css.starLocation}>
+            <a href="#reviews">
+              <div className={css.icon}>
+                <svg className={css.iconStar}>
+                  <use href={`${sprite}#icon-star`} />
+                </svg>
+                <p className={css.reviews}>
+                  {rating}({reviews?.length || 0} Reviews)
+                </p>
+              </div>
+            </a>
 
             <div className={css.icon}>
               <svg className={css.iconMap}>
@@ -63,7 +65,7 @@ export default function DetailsPage() {
               </svg>
               <p>{formattedLocation}</p>
             </div>
-          </a>
+          </div>
 
           <h3 className={css.price}>€{formattedPrice}</h3>
         </div>
