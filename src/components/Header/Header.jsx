@@ -1,5 +1,5 @@
 import sprite from "../../icons/sprite.svg";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Header.module.css";
 

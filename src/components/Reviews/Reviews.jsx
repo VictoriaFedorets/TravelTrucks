@@ -7,7 +7,7 @@ export default function Reviews() {
   const currentCamper = useSelector(selectCurrentCamper);
   const stars = [1, 2, 3, 4, 5];
 
-  console.log("Current camper:", currentCamper);
+  // console.log("Current camper:", currentCamper);
 
   if (!currentCamper || Object.keys(currentCamper).length === 0) {
     return <p>Loading...</p>; // Показываем, пока данные не загружены

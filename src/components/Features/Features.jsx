@@ -6,7 +6,7 @@ import Facilities from "../Facilities/Facilities";
 
 export default function Features() {
   const currentCamper = useSelector(selectCurrentCamper);
-  console.log("Current camper:", currentCamper);
+  // console.log("Current camper:", currentCamper);
 
   const { form, length, width, height, tank, consumption } = currentCamper;
 

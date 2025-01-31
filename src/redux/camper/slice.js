@@ -32,7 +32,7 @@ const camperSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchByIdCamper.fulfilled, (state, action) => {
-        console.log("Payload", action.payload);
+        // console.log("Payload", action.payload);
         state.isLoading = false;
         state.error = null;
         state.current = action.payload;

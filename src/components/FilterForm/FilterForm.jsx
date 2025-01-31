@@ -17,7 +17,7 @@ export default function FilterForm({ onFilter }) {
       location: normalizedLocation,
     };
 
-    console.log("Filtered values:", filteredValues); // Додано для налагодження
+    // console.log("Filtered values:", filteredValues);
 
     onFilter(filteredValues); // Передача фільтрів до батьківського компонента
     actions.setSubmitting(false); // Завершення стану сабміту
@@ -32,7 +32,6 @@ export default function FilterForm({ onFilter }) {
     { name: "radio", label: "Radio", icon: "icon-radio" },
     { name: "gas", label: "Gas", icon: "icon-gas" },
     { name: "microwave", label: "Microwave", icon: "icon-microwave" },
-    // { name: "shower", label: "Shower", icon: "icon-shower" },
     { name: "refrigerator", label: "Refrigerator", icon: "icon-fridge" },
     { name: "water", label: "Water", icon: "icon-water" },
   ];
@@ -57,7 +56,6 @@ export default function FilterForm({ onFilter }) {
         gas: false,
         kitchen: false,
         microwave: false,
-        // shower: false,
         radio: false,
         refrigerator: false,
         water: false,

@@ -25,10 +25,10 @@ export default function CatalogPage() {
 
     if (filters && Object.keys(filters).length > 0) {
       filtered = campers.filter(camper => {
-        let matches = true;
+        let isValid = true;
 
         if (filters.vehicleType && camper.form !== filters.vehicleType) {
-          matches = false;
+          isValid = false;
         }
 
         const equipmentFilters = [
@@ -45,7 +45,7 @@ export default function CatalogPage() {
 
         for (const equipment of equipmentFilters) {
           if (filters[equipment] && !camper[equipment]) {
-            matches = false;
+            isValid = false;
           }
         }
 
@@ -65,11 +65,11 @@ export default function CatalogPage() {
           );
 
           if (!locationMatches) {
-            matches = false;
+            isValid = false;
           }
         }
 
-        return matches;
+        return isValid;
       });
     }
 

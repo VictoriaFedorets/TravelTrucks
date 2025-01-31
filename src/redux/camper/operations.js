@@ -10,7 +10,7 @@ export const fetchCampers = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const { data } = await axios.get("/campers", { params });
-      console.log("fetchCampers", data);
+      // console.log("fetchCampers", data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -22,12 +22,12 @@ export const fetchByIdCamper = createAsyncThunk(
   "campers/getById",
   async (id, thunkApi) => {
     try {
-      console.log("Fetching camper with ID:", id); // Лог перед запросом
+      // console.log("Fetching camper with ID:", id); // Лог перед запросом
       const { data } = await axios.get(`/campers/${id}`);
-      console.log("fetchByIdCamper response:", data); // Лог успешного ответа
+      // console.log("fetchByIdCamper response:", data); // Лог успешного ответа
       return data;
     } catch (error) {
-      console.error("Error fetching camper by ID:", error.message); // Лог ошибки
+      // console.error("Error fetching camper by ID:", error.message); // Лог ошибки
       return thunkApi.rejectWithValue(error.message);
     }
   }

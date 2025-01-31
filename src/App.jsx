@@ -1,17 +1,13 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader/Loader.jsx";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
-// import DetailsPage from "./pages/DetailsPage/DetailsPage.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage//HomePage.jsx"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage.jsx"));
 const DetailsPage = lazy(() => import("./pages/DetailsPage/DetailsPage.jsx"));
 const Features = lazy(() => import("./components/Features/Features.jsx"));
 const Reviews = lazy(() => import("./components/Reviews/Reviews.jsx"));
-// const NotFoundPage = lazy(() =>
-//   import("../../pages/NotFoundPage/NotFoundPage")
-// );
 
 export default function App() {
   return (
