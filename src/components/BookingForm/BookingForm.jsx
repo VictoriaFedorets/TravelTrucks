@@ -23,13 +23,13 @@ export default function BookingForm() {
           comment: "",
         }}
         onSubmit={(values, { resetForm }) => {
-          console.log("Form submitted with values:", values);
+          // console.log("Form submitted with values:", values);
 
-          // Имитация успешной отправки данных
+          // Імітація успішної відправки даних
           setTimeout(() => {
             alert("Form submitted successfully!");
-            resetForm(); // Сброс формы в Formik
-            setStartDate(null); // Сброс локального состояния для DatePicker
+            resetForm();
+            setStartDate(null);
           }, 500);
         }}
       >
@@ -62,10 +62,10 @@ export default function BookingForm() {
                 selected={startDate}
                 onChange={date => {
                   setStartDate(date);
-                  setFieldValue("bookingDate", date); // Обновляем поле в Formik
+                  setFieldValue("bookingDate", date); // оновлюємо поле в Formik
                 }}
                 placeholderText="Booking date*"
-                minDate={new Date()} // Минимальная дата: сегодня
+                minDate={new Date()} // Мін дата: сьогодні
                 popperPlacement="bottom-end"
               />
             </div>

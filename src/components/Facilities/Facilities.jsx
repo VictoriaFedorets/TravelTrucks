@@ -2,7 +2,6 @@ import sprite from "../../icons/sprite.svg";
 import css from "./Facilities.module.css";
 
 export default function Facilities({ camper }) {
-  // Карта иконок для соответствующих свойств
   const iconMap = {
     AC: "icon-ac",
     TV: "icon-tv",
@@ -15,15 +14,14 @@ export default function Facilities({ camper }) {
     refrigerator: "icon-fridge",
     water: "icon-water",
     engine: "icon-fuel",
-    transmission: "icon-s-grid", // Иконка для трансмиссии
+    transmission: "icon-s-grid",
   };
 
-  // Фильтруем свойства с булевыми значениями true
   const trueFeatures = Object.entries(camper).filter(
     ([key, value]) => value === true
   );
 
-  // Добавляем свойства с их значениями, если они существуют
+  // Добаємо властивості з їх значеннями, якщо вони існують
   if (camper.transmission) {
     trueFeatures.push(["transmission", camper.transmission]);
   }
@@ -39,7 +37,7 @@ export default function Facilities({ camper }) {
           <svg className={css.icon}>
             <use href={`${sprite}#${iconMap[key] || "icon-default"}`} />
           </svg>
-          {/* Если это свойство transmission, выводим значение */}
+          {/* Якщо ця властивість transmission, виводимо значення */}
           <p className={css.facilitiesText}>
             {key === "transmission" || key === "engine" ? value : key}
           </p>

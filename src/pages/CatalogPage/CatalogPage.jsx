@@ -17,7 +17,7 @@ export default function CatalogPage() {
   const [visibleCount, setVisibleCount] = useState(5);
 
   useEffect(() => {
-    dispatch(fetchCampers()); // Загружаем кемперы при первом рендере
+    dispatch(fetchCampers());
   }, [dispatch]);
 
   useEffect(() => {

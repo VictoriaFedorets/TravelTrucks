@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import camperReducer from "./camper/slice.js";
+import campersReducer from "./camper/slice.js";
 // import filtersReducer from "./filtersSlice.js";
 import favouritesReducer from "./favourites/slice.js";
 
@@ -22,7 +22,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  camper: camperReducer,
+  campers: campersReducer,
   favourites: favouritesReducer,
   //   filters: filtersReducer,
 });

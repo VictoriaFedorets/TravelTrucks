@@ -6,16 +6,15 @@ import Facilities from "../Facilities/Facilities";
 
 export default function Features() {
   const currentCamper = useSelector(selectCurrentCamper);
-  // console.log("Current camper:", currentCamper);
 
   const { form, length, width, height, tank, consumption } = currentCamper;
 
   if (!currentCamper || Object.keys(currentCamper).length === 0) {
-    return <p>Loading...</p>; // Показываем, пока данные не загружены
+    return <p>Loading...</p>;
   }
 
   if (!currentCamper.reviews || currentCamper.reviews.length === 0) {
-    return <p>No reviews available.</p>; // Нет отзывов
+    return <p>No reviews available.</p>;
   }
 
   return (

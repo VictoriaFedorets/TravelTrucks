@@ -7,14 +7,12 @@ export default function Reviews() {
   const currentCamper = useSelector(selectCurrentCamper);
   const stars = [1, 2, 3, 4, 5];
 
-  // console.log("Current camper:", currentCamper);
-
   if (!currentCamper || Object.keys(currentCamper).length === 0) {
-    return <p>Loading...</p>; // Показываем, пока данные не загружены
+    return <p>Loading...</p>;
   }
 
   if (!currentCamper.reviews || currentCamper.reviews.length === 0) {
-    return <p>No reviews available.</p>; // Нет отзывов
+    return <p>No reviews available.</p>;
   }
 
   return (

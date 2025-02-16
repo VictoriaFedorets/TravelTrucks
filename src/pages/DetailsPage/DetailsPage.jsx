@@ -7,16 +7,21 @@ import css from "./DetailsPage.module.css";
 import clsx from "clsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
+import {
+  selectCurrentCamper,
+  selectError,
+  selectIsLoading,
+} from "../../redux/camper/selectors.js";
 
 export default function DetailsPage() {
   const { id } = useParams(); // Берем id из параметров маршрута
   const dispatch = useDispatch();
-  const camper = useSelector(state => state.camper.current);
+  const camper = useSelector(selectCurrentCamper);
 
   const { price, name, rating, reviews, location, description, gallery } =
     camper;
-  const isLoading = useSelector(state => state.camper.isLoading);
-  const error = useSelector(state => state.camper.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const formattedPrice = Number(price).toFixed(2);
   // console.log(location);
@@ -24,7 +29,6 @@ export default function DetailsPage() {
   const formattedLocation = location
     ? camper.location.split(", ").reverse().join(", ")
     : "Location not available";
-  // console.log(formattedLocation);
 
   const getNavLinkClass = props => {
     return clsx(css.link, props.isActive && css.active);

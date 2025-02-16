@@ -1,4 +1,3 @@
-// import { useDispatch } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import sprite from "../../icons/sprite.svg";
 import {
@@ -31,13 +30,13 @@ export default function CamperItem({ camper }) {
     }
   };
 
-  const navigate = useNavigate(); // Хук для программной навигации
+  const navigate = useNavigate(); // Хук для програмної навигаціі
 
   const handleClickSeeReviews = () => {
-    navigate(`/catalog/${id}/reviews`); // Программное перенаправление
+    navigate(`/catalog/${id}/reviews`); // Программне перенаправлення
   };
 
-  // Разделяем и меняем местами локацию
+  // Разділяємо та міняємо місцями локалію
   const formattedLocation = location.split(", ").reverse().join(", ");
 
   return (

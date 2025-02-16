@@ -2,37 +2,34 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchCampers, fetchByIdCamper } from "./operations";
 
 const camperSlice = createSlice({
-  name: "camper",
+  name: "campers",
   initialState: {
     items: [],
     current: {},
-    isLoading: true,
+    isLoading: false,
     error: null,
   },
   extraReducers: builder => {
     builder
       .addCase(fetchCampers.pending, (state, action) => {
-        state.items = [];
-        state.current = {};
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.items; // Беремо тільки масив items
+        state.items = action.payload.items;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
 
-      .addCase(fetchByIdCamper.pending, (state, action) => {
-        state.items = [];
-        state.current = {};
+      .addCase(fetchByIdCamper.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchByIdCamper.fulfilled, (state, action) => {
-        // console.log("Payload", action.payload);
         state.isLoading = false;
         state.error = null;
         state.current = action.payload;

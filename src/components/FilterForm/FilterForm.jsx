@@ -17,8 +17,6 @@ export default function FilterForm({ onFilter }) {
       location: normalizedLocation,
     };
 
-    // console.log("Filtered values:", filteredValues);
-
     onFilter(filteredValues); // Передача фільтрів до батьківського компонента
     actions.setSubmitting(false); // Завершення стану сабміту
   };
