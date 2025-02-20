@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import sprite from "../../icons/sprite.svg";
 import { fetchByIdCamper } from "../../redux/camper/operations.js";
@@ -14,8 +14,9 @@ import {
 } from "../../redux/camper/selectors.js";
 
 export default function DetailsPage() {
-  const { id } = useParams(); // Берем id из параметров маршрута
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const camper = useSelector(selectCurrentCamper);
 
   const { price, name, rating, reviews, location, description, gallery } =
@@ -24,8 +25,6 @@ export default function DetailsPage() {
   const error = useSelector(selectError);
 
   const formattedPrice = Number(price).toFixed(2);
-  // console.log(location);
-  // через те що location undefined  до загрузки даних, тому робимо перевірку з тернарним нижче
   const formattedLocation = location
     ? camper.location.split(", ").reverse().join(", ")
     : "Location not available";
@@ -42,6 +41,19 @@ export default function DetailsPage() {
     }
   }, [dispatch, id]);
 
+  const handleReviewClick = e => {
+    e.preventDefault(); // Отменяем стандартное поведение перехода по ссылке
+    navigate(`/catalog/${id}/reviews`); // Переход на страницу с отзывами
+
+    // После перехода прокручиваем к нужному элементу
+    setTimeout(() => {
+      const reviewSection = document.getElementById("reviews");
+      if (reviewSection) {
+        reviewSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300); // Ждем немного, чтобы переход успел выполниться
+  };
+
   if (isLoading) return <Loader />;
   if (error) return <p>Error: {error}</p>;
   if (!camper) return <p>No camper found.</p>;
@@ -53,7 +65,7 @@ export default function DetailsPage() {
           <h3 className={css.title}>{name}</h3>
 
           <div className={css.starLocation}>
-            <a href="#reviews">
+            <a href={`/catalog/${id}/reviews`} onClick={handleReviewClick}>
               <div className={css.icon}>
                 <svg className={css.iconStar}>
                   <use href={`${sprite}#icon-star`} />
@@ -93,12 +105,12 @@ export default function DetailsPage() {
       <div className={css.featuresReviews}>
         <ul className={css.featuresReviewsList}>
           <li className={css.featuresItems}>
-            <NavLink to="features" className={getNavLinkClass}>
+            <NavLink to={`/catalog/${id}/features`} className={getNavLinkClass}>
               Features
             </NavLink>
           </li>
-          <li className={css.reviewsItems} id="reviews">
-            <NavLink to="reviews" className={getNavLinkClass}>
+          <li className={css.reviewsItems}>
+            <NavLink to={`/catalog/${id}/reviews`} className={getNavLinkClass}>
               Reviews
             </NavLink>
           </li>

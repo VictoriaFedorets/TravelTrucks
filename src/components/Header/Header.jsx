@@ -23,6 +23,9 @@ export default function Header() {
         <NavLink to="/catalog" className={getNavLinkClass}>
           Catalog
         </NavLink>
+        <NavLink to="/favourites" className={getNavLinkClass}>
+          Favourites
+        </NavLink>
       </nav>
     </header>
   );

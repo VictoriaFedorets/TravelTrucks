@@ -5,6 +5,9 @@ import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 
 const HomePage = lazy(() => import("./pages/HomePage//HomePage.jsx"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage.jsx"));
+const FavouritesPage = lazy(() =>
+  import("./pages/FavouritesPage/FavouritesPage.jsx")
+);
 const DetailsPage = lazy(() => import("./pages/DetailsPage/DetailsPage.jsx"));
 const Features = lazy(() => import("./components/Features/Features.jsx"));
 const Reviews = lazy(() => import("./components/Reviews/Reviews.jsx"));
@@ -16,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="/catalog/:id" element={<DetailsPage />}>
             <Route index element={<Navigate to="features" />} />
             <Route path="features" element={<Features />} />

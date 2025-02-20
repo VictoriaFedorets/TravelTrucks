@@ -5,7 +5,6 @@ import {
   removeFromFavourites,
 } from "../../redux/favourites/slice";
 import Facilities from "../Facilities/Facilities.jsx";
-
 import css from "./CamperItem.module.css";
 import { selectFavourites } from "../../redux/favourites/selectors.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,11 +15,7 @@ export default function CamperItem({ camper }) {
   const dispatch = useDispatch();
   const formattedPrice = Number(price).toFixed(2);
   const favourites = useSelector(selectFavourites);
-  // console.log(selectFavourites);
-
   const isFavourite = favourites.includes(id);
-  // console.log(isFavourite);
-  // Перевіряємо, чи є елемент в обраних
 
   const handleFavouriteClick = () => {
     if (isFavourite) {
@@ -30,23 +25,21 @@ export default function CamperItem({ camper }) {
     }
   };
 
-  const navigate = useNavigate(); // Хук для програмної навигаціі
+  const navigate = useNavigate();
 
   const handleClickSeeReviews = () => {
-    navigate(`/catalog/${id}/reviews`); // Программне перенаправлення
+    navigate(`/catalog/${id}/reviews`);
   };
 
-  // Разділяємо та міняємо місцями локалію
-  const formattedLocation = location.split(", ").reverse().join(", ");
+  const formattedLocation =
+    location?.split(", ").reverse().join(", ") || "Unknown location";
 
   return (
     <div className={css.camperWrapper}>
-      <img src={gallery[0].original} alt={name} className={css.imgCar} />
-
+      <img src={gallery[0]?.original} alt={name} className={css.imgCar} />
       <div className={css.carInfo}>
         <div className={css.title}>
           <h3>{name}</h3>
-
           <div className={css.price}>
             <h3>€{formattedPrice}</h3>
             <button
@@ -73,7 +66,7 @@ export default function CamperItem({ camper }) {
             className={css.star}
             onClick={handleClickSeeReviews}
             role="button"
-            tabIndex={0} // Щоб div був доступний через клавіатуру
+            tabIndex={0}
             onKeyDown={e => {
               if (e.key === "Enter" || e.key === " ") {
                 handleClickSeeReviews();
@@ -84,10 +77,9 @@ export default function CamperItem({ camper }) {
               <use href={`${sprite}#icon-star`} />
             </svg>
             <p className={css.reviews}>
-              {rating}({reviews?.length || 0} Reviews)
+              {rating} ({reviews?.length || 0} Reviews)
             </p>
           </div>
-
           <div className={css.map}>
             <svg className={css.iconMap}>
               <use href={`${sprite}#icon-map`} />
@@ -97,9 +89,7 @@ export default function CamperItem({ camper }) {
         </div>
 
         <p className={css.description}>{description}</p>
-
         <Facilities camper={camper} />
-
         <Link to={`/catalog/${id}`} className={css.btnShowMore}>
           Show more
         </Link>
