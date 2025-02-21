@@ -4,13 +4,16 @@ import clsx from "clsx";
 import css from "./Header.module.css";
 
 export default function Header() {
-  const getNavLinkClass = props => {
-    return clsx(css.link, props.isActive && css.active);
+  const getNavLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
   };
 
   return (
     <header className={css.containerHeader}>
-      <NavLink to="/" className={`${getNavLinkClass} && ${css.logo}`}>
+      <NavLink
+        to="/"
+        className={`${getNavLinkClass({ isActive: true })} && ${css.logo}`}
+      >
         <svg className={css.iconLogo}>
           <use href={`${sprite}#icon-logo`} />
         </svg>
