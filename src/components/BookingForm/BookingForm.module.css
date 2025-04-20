@@ -62,6 +62,7 @@
 
 .inputComment {
   height: 118px;
+  resize: none;
 }
 
 .inputComment:focus {
