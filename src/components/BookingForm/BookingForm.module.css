@@ -3,7 +3,7 @@
   border-radius: 10px;
   padding: 44px 57px;
   width: 641px;
-  height: 588px;
+  /* height: 588px; */
 }
 
 .titleForm {
@@ -37,6 +37,12 @@
 
 .input:not(:last-child) {
   margin-bottom: 14px;
+}
+
+.error {
+  padding-left: 14px;
+  margin-bottom: 16px;
+  color: var(--button);
 }
 
 .inputPicker {

@@ -19,6 +19,7 @@ export default function FilterForm({ onFilter }) {
 
     onFilter(filteredValues); // Передача фільтрів до батьківського компонента
     actions.setSubmitting(false); // Завершення стану сабміту
+    actions.resetForm();
   };
 
   const vehicleEquipment = [
