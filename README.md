@@ -1,6 +1,8 @@
-# 🚐 Travel Trucks https://travel-trucks-seven-chi.vercel.app/
+# 🚐 Travel Trucks
 
-Description
+https://travel-trucks-seven-chi.vercel.app/
+
+## 📖 Description
 
 Travel Trucks is a sleek and modern web app designed to help you rent the
 perfect camper van for your next adventure.  
